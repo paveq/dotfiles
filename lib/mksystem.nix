@@ -62,6 +62,7 @@ systemFunc rec {
     } else { })
     (if darwin then ({ config, ... }: {
       homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+      system.checks.verifyHomebrewInstall = false;
     }) else { })
 
     machineConfig
