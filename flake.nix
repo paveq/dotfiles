@@ -1,5 +1,5 @@
 {
-  description = "Evan's Nix System Configuration";
+  description = "Paavo's Nix System Configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
@@ -36,13 +36,13 @@
     {
       nixosConfigurations.wsl = mkSystem "wsl" {
         system = "x86_64-linux";
-        user = "evantravers";
+        user = "paveq";
         wsl = true;
       };
 
-      darwinConfigurations.Theseus = mkSystem "macbook-pro" {
+      darwinConfigurations.mp-laptop = mkSystem "macbook-pro" {
         system = "aarch64-darwin";
-        user = "evantravers";
+        user = "paveq";
         darwin = true;
       };
     };
