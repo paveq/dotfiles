@@ -24,7 +24,7 @@ WSL:
 
 Darwin:
 - Install [homebrew](https://brew.sh/)
-- `sudo nix run nix-darwin -- switch --flake github:evantravers/dotfiles[#macbook-pro]`
+- `sudo nix run nix-darwin -- switch --flake github:paveq/dotfiles[#mp-laptop]`
 
 Use 1Password to configure SSH Agent for host
 
