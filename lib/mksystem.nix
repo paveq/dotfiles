@@ -46,6 +46,24 @@ systemFunc rec {
     # Bring in WSL if this is a WSL build
     (if isWSL then inputs.nixos-wsl.nixosModules.wsl else { })
 
+    # Bring in nix-homebrew for Darwin builds
+    (if darwin then inputs.nix-homebrew.darwinModules.nix-homebrew else { })
+    (if darwin then {
+      nix-homebrew = {
+        enable = true;
+        enableRosetta = true;
+        user = user;
+        taps = {
+          "homebrew/homebrew-core" = inputs.homebrew-core;
+          "homebrew/homebrew-cask" = inputs.homebrew-cask;
+        };
+        mutableTaps = false;
+      };
+    } else { })
+    (if darwin then ({ config, ... }: {
+      homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+    }) else { })
+
     machineConfig
     userOSConfig
     home-manager.home-manager
