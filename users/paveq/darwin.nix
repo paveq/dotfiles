@@ -16,7 +16,10 @@
 
   environment.systemPackages = with pkgs; [
     defaultbrowser
+    google-chrome
+    keycastr
     scroll-reverser
+    unstable.obsidian
   ];
 
   environment.extraInit = ''
